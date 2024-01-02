@@ -1,13 +1,10 @@
 package com.aiwolves.webapp.dtos;
 
-import java.util.Date;
-
 public class RegisterUserDto {
     private String username;
     
     private String password;
-    private Date createdAt;
-    private Date lastupdate;
+
 
 	public String getUsername() {
 		return username;
@@ -24,16 +21,6 @@ public class RegisterUserDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public Date getLastupdate() {
-		return lastupdate;
-	}
-    
-    
 
 }
     
