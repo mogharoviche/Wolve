@@ -1,5 +1,6 @@
 package com.aiwolves.webapp.controllers;
 
+import com.aiwolves.webapp.dtos.UserDto;
 import com.aiwolves.webapp.entities.User;
 import com.aiwolves.webapp.services.UserService;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +22,22 @@ public class UserController {
     }
 
     @GetMapping("/me")
-    public ResponseEntity<User> authenticatedUser() {
+    public ResponseEntity<UserDto> authenticatedUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
+        
         User currentUser = (User) authentication.getPrincipal();
-
-        return ResponseEntity.ok(currentUser);
+        
+        UserDto user = new UserDto();
+        	user.setCreatedAt(currentUser.getCreatedAt());
+        	user.setLastupdate(currentUser.getLastupdate());
+        	user.setUsername(currentUser.getUsername());
+        	user.setAuthorities(currentUser.getAuthorities());  	
+        	user.setAccountNonExpired(currentUser.isAccountNonExpired());
+        	user.setAccountNonLocke(currentUser.isAccountNonLocked());
+        	user.setCredentialsNonExpired(currentUser.isCredentialsNonExpired());
+        	user.setEnabled(currentUser.isEnabled());       	
+        	
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/")

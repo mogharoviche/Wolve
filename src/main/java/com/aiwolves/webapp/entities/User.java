@@ -39,11 +39,20 @@ public class User implements UserDetails {
 	 @CreationTimestamp
 	 @Column(updatable = false, name = "created_at")
 	 private Date createdAt;
-
+	 
 	 @UpdateTimestamp
 	 @Column(name = "Last_updated")
 	  private Date lastupdate;
-	 //I d'ont cover role access control. so the list is empty *********************
+	 
+	 public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public Date getLastupdate() {
+		return lastupdate;
+	}
+
+	//I d'ont cover role access control. so the list is empty *********************
 	 @Override
 	    public Collection<? extends GrantedAuthority> getAuthorities() {
 	        return List.of();
